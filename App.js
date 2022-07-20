@@ -1,16 +1,17 @@
+import { useState } from "react";
 import { StyleSheet, ImageBackground, SafeAreaView } from "react-native";
+import { LinearGradient } from "expo-linear-gradient";
 import { useFonts } from "expo-font";
 import AppLoading from "expo-app-loading";
+
 import StartGameScreen from "./screens/StartGameScreen";
-import { LinearGradient } from "expo-linear-gradient";
-import { useState } from "react";
 import GameScreen from "./screens/GameScreen";
-import Colors from "./constants/colors";
 import GameOverScreen from "./screens/GameOverScreen";
+import Colors from "./constants/colors";
 
 export default function App() {
   const [userNumber, setUserNumber] = useState();
-  const [gameOver, setGameOver] = useState(true);
+  const [gameIsOver, setGameIsOver] = useState(true);
   const [guessRounds, setGuessRounds] = useState(0);
 
   const [fontsLoaded] = useFonts({
@@ -22,28 +23,30 @@ export default function App() {
     return <AppLoading />;
   }
 
-  const pickedNumberHandler = (pickedNumber) => {
+  function pickedNumberHandler(pickedNumber) {
     setUserNumber(pickedNumber);
-    setGameOver(false);
-  };
+    setGameIsOver(false);
+  }
 
-  const gameOverHandler = () => {
-    setGameOver(true);
-  };
+  function gameOverHandler(numberOfRounds) {
+    setGameIsOver(true);
+    setGuessRounds(numberOfRounds);
+  }
 
-  const startNewGameHandler = () => {
+  function startNewGameHandler() {
     setUserNumber(null);
     setGuessRounds(0);
-  };
+  }
 
   let screen = <StartGameScreen onPickNumber={pickedNumberHandler} />;
+
   if (userNumber) {
     screen = (
       <GameScreen userNumber={userNumber} onGameOver={gameOverHandler} />
     );
   }
 
-  if (gameOver && userNumber) {
+  if (gameIsOver && userNumber) {
     screen = (
       <GameOverScreen
         userNumber={userNumber}
@@ -64,7 +67,7 @@ export default function App() {
         style={styles.rootScreen}
         imageStyle={styles.backgroundImage}
       >
-        <SafeAreaView styles={styles.rootScreen}>{screen}</SafeAreaView>
+        <SafeAreaView style={styles.rootScreen}>{screen}</SafeAreaView>
       </ImageBackground>
     </LinearGradient>
   );
