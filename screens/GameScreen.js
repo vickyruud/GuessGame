@@ -43,7 +43,7 @@ function GameScreen({ userNumber, onGameOver }) {
       (direction === "lower" && currentGuess < userNumber) ||
       (direction === "greater" && currentGuess > userNumber)
     ) {
-      Alert.alert("Don't lie!", "You know that this is wrong...", [
+      Alert.alert("Don't lie!", "You know that this is wrong!", [
         { text: "Sorry!", style: "cancel" },
       ]);
       return;
@@ -110,6 +110,7 @@ const styles = StyleSheet.create({
   screen: {
     flex: 1,
     padding: 24,
+    alignItems: "center",
   },
   instructionText: {
     marginBottom: 12,
