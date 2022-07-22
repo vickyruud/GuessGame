@@ -43,7 +43,7 @@ function GameScreen({ userNumber, onGameOver }) {
       (direction === "lower" && currentGuess < userNumber) ||
       (direction === "greater" && currentGuess > userNumber)
     ) {
-      Alert.alert("Don't lie!", "You know that this is wrong!", [
+      Alert.alert("Don't lie!", "You know that this is the wrong number!", [
         { text: "Sorry!", style: "cancel" },
       ]);
       return;
