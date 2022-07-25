@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState } from 'react';
 import {
   TextInput,
   View,
@@ -7,16 +7,16 @@ import {
   useWindowDimensions,
   KeyboardAvoidingView,
   ScrollView,
-} from "react-native";
+} from 'react-native';
 
-import PrimaryButton from "../components/ui/PrimaryButton";
-import Title from "../components/ui/Title";
-import Colors from "../constants/colors";
-import Card from "../components/ui/Card";
-import InstructionText from "../components/ui/InstructionText";
+import PrimaryButton from '../components/ui/PrimaryButton';
+import Title from '../components/ui/Title';
+import Colors from '../constants/colors';
+import Card from '../components/ui/Card';
+import InstructionText from '../components/ui/InstructionText';
 
 function StartGameScreen({ onPickNumber }) {
-  const [enteredNumber, setEnteredNumber] = useState("");
+  const [enteredNumber, setEnteredNumber] = useState('');
 
   const { width, height } = useWindowDimensions();
 
@@ -25,7 +25,7 @@ function StartGameScreen({ onPickNumber }) {
   }
 
   function resetInputHandler() {
-    setEnteredNumber("");
+    setEnteredNumber('');
   }
 
   function confirmInputHandler() {
@@ -33,9 +33,9 @@ function StartGameScreen({ onPickNumber }) {
 
     if (isNaN(chosenNumber) || chosenNumber <= 0 || chosenNumber > 99) {
       Alert.alert(
-        "Invalid number!",
-        "Number has to be a number between 1 and 99.",
-        [{ text: "Okay", style: "destructive", onPress: resetInputHandler }]
+        'Invalid number!',
+        'Number has to be a number between 1 and 99.',
+        [{ text: 'Okay', style: 'destructive', onPress: resetInputHandler }]
       );
       return;
     }
@@ -43,7 +43,7 @@ function StartGameScreen({ onPickNumber }) {
     onPickNumber(chosenNumber);
   }
 
-  const marginTopDistance = height < 395 ? 5 : 100;
+  const marginTopDistance = height < 380 ? 30 : 100;
 
   return (
     <ScrollView style={styles.screen}>
@@ -80,7 +80,7 @@ function StartGameScreen({ onPickNumber }) {
 
 export default StartGameScreen;
 
-// const deviceHeight = Dimensions.get("window").height;
+// const deviceHeight = Dimensions.get('window').height;
 
 const styles = StyleSheet.create({
   screen: {
@@ -88,8 +88,8 @@ const styles = StyleSheet.create({
   },
   rootContainer: {
     flex: 1,
-    // marginTop: deviceHeight < 395 ? 0 : 100,
-    alignItems: "center",
+    // marginTop: deviceHeight < 380 ? 30 : 100,
+    alignItems: 'center',
   },
   numberInput: {
     height: 50,
@@ -99,11 +99,11 @@ const styles = StyleSheet.create({
     borderBottomWidth: 2,
     color: Colors.accent500,
     marginVertical: 8,
-    fontWeight: "bold",
-    textAlign: "center",
+    fontWeight: 'bold',
+    textAlign: 'center',
   },
   buttonsContainer: {
-    flexDirection: "row",
+    flexDirection: 'row',
   },
   buttonContainer: {
     flex: 1,
