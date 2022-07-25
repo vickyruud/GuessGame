@@ -17,4 +17,4 @@ The app has been deployed on expo [here](https://expo.dev/@vickyruud/projects/Gu
 
 ## Screenshot
 
-![Weather](https://github.com/vickyruud/GuessGame/blob/main/assets/images/screenshot.png)
+![GuessGame](https://github.com/vickyruud/GuessGame/blob/main/assets/images/demo.gif)
